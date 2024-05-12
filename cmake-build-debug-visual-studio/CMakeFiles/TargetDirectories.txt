@@ -1,0 +1,3 @@
+D:/programowanie/SGD/BallJump/cmake-build-debug-visual-studio/CMakeFiles/BallJump.dir
+D:/programowanie/SGD/BallJump/cmake-build-debug-visual-studio/CMakeFiles/edit_cache.dir
+D:/programowanie/SGD/BallJump/cmake-build-debug-visual-studio/CMakeFiles/rebuild_cache.dir
