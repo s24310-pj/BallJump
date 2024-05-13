@@ -18,6 +18,19 @@ add_executable(${PROJECT_NAME} main.cpp
         GameObject.cpp
         GameObject.h
         Map.cpp
-        Map.h)
+        Map.h
+        ECS/ECS.h
+        ECS/Components.h
+        ECS/TransformComponent.h
+        ECS/SpriteComponent.h
+        Vector2D.h
+        Vector2D.cpp
+        ECS/KeyboardController.h
+        ECS/ColliderComponent.h
+        Collision.cpp
+        Collision.h
+        ECS/TileComponent.h
+        ECS/ECS.cpp
+        ECS/Animation.h)
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIB_DIR}/SDL2.lib ${SDL2_LIB_DIR}/SDL2main.lib)
 target_link_libraries(${PROJECT_NAME} ${SDL2_IMAGE_LIB_DIR}/SDL2_image.lib)
