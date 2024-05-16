@@ -3,6 +3,7 @@
 
 #include "Game.h"
 
+
 class GameObject {
 
 public:
@@ -13,6 +14,7 @@ public:
     void Update();
 
     void Render();
+
 
 private:
 

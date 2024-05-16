@@ -1,0 +1,8 @@
+//
+// Created by micha on 16.05.2024.
+//
+
+#ifndef BALLJUMP_GRAVITYCOMPONENT_H
+#define BALLJUMP_GRAVITYCOMPONENT_H
+
+#endif //BALLJUMP_GRAVITYCOMPONENT_H

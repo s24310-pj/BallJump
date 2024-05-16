@@ -73,14 +73,6 @@ build CMakeFiles\BallJump.dir\TextureManager.cpp.obj: CXX_COMPILER__BallJump_uns
   TARGET_COMPILE_PDB = CMakeFiles\BallJump.dir\
   TARGET_PDB = BallJump.pdb
 
-build CMakeFiles\BallJump.dir\GameObject.cpp.obj: CXX_COMPILER__BallJump_unscanned_Debug D$:\programowanie\SGD\BallJump\GameObject.cpp || cmake_object_order_depends_target_BallJump
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
-  INCLUDES = -ID:\SDL2-devel-2.30.1-VC\SDL2-2.30.1\include -ID:\SDL2_image-2.0.1\include
-  OBJECT_DIR = CMakeFiles\BallJump.dir
-  OBJECT_FILE_DIR = CMakeFiles\BallJump.dir
-  TARGET_COMPILE_PDB = CMakeFiles\BallJump.dir\
-  TARGET_PDB = BallJump.pdb
-
 build CMakeFiles\BallJump.dir\Map.cpp.obj: CXX_COMPILER__BallJump_unscanned_Debug D$:\programowanie\SGD\BallJump\Map.cpp || cmake_object_order_depends_target_BallJump
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
   INCLUDES = -ID:\SDL2-devel-2.30.1-VC\SDL2-2.30.1\include -ID:\SDL2_image-2.0.1\include
@@ -113,6 +105,14 @@ build CMakeFiles\BallJump.dir\ECS\ECS.cpp.obj: CXX_COMPILER__BallJump_unscanned_
   TARGET_COMPILE_PDB = CMakeFiles\BallJump.dir\
   TARGET_PDB = BallJump.pdb
 
+build CMakeFiles\BallJump.dir\GameObject.cpp.obj: CXX_COMPILER__BallJump_unscanned_Debug D$:\programowanie\SGD\BallJump\GameObject.cpp || cmake_object_order_depends_target_BallJump
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
+  INCLUDES = -ID:\SDL2-devel-2.30.1-VC\SDL2-2.30.1\include -ID:\SDL2_image-2.0.1\include
+  OBJECT_DIR = CMakeFiles\BallJump.dir
+  OBJECT_FILE_DIR = CMakeFiles\BallJump.dir
+  TARGET_COMPILE_PDB = CMakeFiles\BallJump.dir\
+  TARGET_PDB = BallJump.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target BallJump
@@ -121,7 +121,7 @@ build CMakeFiles\BallJump.dir\ECS\ECS.cpp.obj: CXX_COMPILER__BallJump_unscanned_
 #############################################
 # Link the executable BallJump.exe
 
-build BallJump.exe: CXX_EXECUTABLE_LINKER__BallJump_Debug CMakeFiles\BallJump.dir\main.cpp.obj CMakeFiles\BallJump.dir\Game.cpp.obj CMakeFiles\BallJump.dir\TextureManager.cpp.obj CMakeFiles\BallJump.dir\GameObject.cpp.obj CMakeFiles\BallJump.dir\Map.cpp.obj CMakeFiles\BallJump.dir\Vector2D.cpp.obj CMakeFiles\BallJump.dir\Collision.cpp.obj CMakeFiles\BallJump.dir\ECS\ECS.cpp.obj | D$:\SDL2-devel-2.30.1-VC\SDL2-2.30.1\lib\x64\SDL2.lib D$:\SDL2-devel-2.30.1-VC\SDL2-2.30.1\lib\x64\SDL2main.lib D$:\SDL2_image-2.0.1\lib\x64\SDL2_image.lib
+build BallJump.exe: CXX_EXECUTABLE_LINKER__BallJump_Debug CMakeFiles\BallJump.dir\main.cpp.obj CMakeFiles\BallJump.dir\Game.cpp.obj CMakeFiles\BallJump.dir\TextureManager.cpp.obj CMakeFiles\BallJump.dir\Map.cpp.obj CMakeFiles\BallJump.dir\Vector2D.cpp.obj CMakeFiles\BallJump.dir\Collision.cpp.obj CMakeFiles\BallJump.dir\ECS\ECS.cpp.obj CMakeFiles\BallJump.dir\GameObject.cpp.obj | D$:\SDL2-devel-2.30.1-VC\SDL2-2.30.1\lib\x64\SDL2.lib D$:\SDL2-devel-2.30.1-VC\SDL2-2.30.1\lib\x64\SDL2main.lib D$:\SDL2_image-2.0.1\lib\x64\SDL2_image.lib
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = D:\SDL2-devel-2.30.1-VC\SDL2-2.30.1\lib\x64\SDL2.lib  D:\SDL2-devel-2.30.1-VC\SDL2-2.30.1\lib\x64\SDL2main.lib  D:\SDL2_image-2.0.1\lib\x64\SDL2_image.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

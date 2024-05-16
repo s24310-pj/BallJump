@@ -15,8 +15,6 @@ add_executable(${PROJECT_NAME} main.cpp
         Game.h
         TextureManager.cpp
         TextureManager.h
-        GameObject.cpp
-        GameObject.h
         Map.cpp
         Map.h
         ECS/ECS.h
@@ -31,6 +29,9 @@ add_executable(${PROJECT_NAME} main.cpp
         Collision.h
         ECS/TileComponent.h
         ECS/ECS.cpp
-        ECS/Animation.h)
+        ECS/Animation.h
+        ECS/GravityComponent.h
+        GameObject.cpp
+        GameObject.h)
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIB_DIR}/SDL2.lib ${SDL2_LIB_DIR}/SDL2main.lib)
 target_link_libraries(${PROJECT_NAME} ${SDL2_IMAGE_LIB_DIR}/SDL2_image.lib)

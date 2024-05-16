@@ -76,12 +76,13 @@ public:
 
     void destroy() { active = false; }
 
-    bool hasGroup(Group mGroup){
+    bool hasGroup(Group mGroup) {
         return groupBitSet[mGroup];
     }
 
     void addGroup(Group mGroup);
-    void delGroup(Group mGroup){
+
+    void delGroup(Group mGroup) {
         groupBitSet[mGroup] = false;
     }
 
@@ -115,7 +116,7 @@ public:
 class Manager {
 private:
     std::vector<std::unique_ptr<Entity>> entities;
-    std::array<std::vector<Entity*>, maxGroups> groupedEntities;
+    std::array<std::vector<Entity *>, maxGroups> groupedEntities;
 
 public:
     void update() {
@@ -127,11 +128,11 @@ public:
     }
 
     void refresh() {
-        for(auto i(0u); i<maxGroups; i++){
+        for (auto i(0u); i < maxGroups; i++) {
             auto &v(groupedEntities[i]);
-            v.erase(std::remove_if(std::begin(v), std::end(v), [i](Entity *mEntity){
-                return !mEntity->isActive() || !mEntity->hasGroup(i);
-            }),
+            v.erase(std::remove_if(std::begin(v), std::end(v), [i](Entity *mEntity) {
+                        return !mEntity->isActive() || !mEntity->hasGroup(i);
+                    }),
                     std::end(v));
         }
 
@@ -142,11 +143,11 @@ public:
                 std::end(entities));
     }
 
-    void AddToGroup(Entity* mEntity, Group mGroup){
+    void AddToGroup(Entity *mEntity, Group mGroup) {
         groupedEntities[mGroup].emplace_back(mEntity);
     }
 
-    std::vector<Entity*>& getGroup(Group mGroup){
+    std::vector<Entity *> &getGroup(Group mGroup) {
         return groupedEntities[mGroup];
     }
 
