@@ -33,13 +33,11 @@ public:
     SpriteComponent(const char *path, bool isAnimated) {
         animated = isAnimated;
 
-        Animation idle = Animation(0, 3, 100);
-        Animation walk = Animation(1, 8, 100);
+        Animation animate = Animation(0, 6, 200);
 
-        animations.emplace("Idle", idle);
-        animations.emplace("Walk", walk);
+        animations.emplace("animate", animate);
 
-        Play("Idle");
+        Play("animate");
         setTex(path);
     }
 
@@ -78,10 +76,14 @@ public:
         TextureManager::Draw(texture, srcRect, destRect, spriteFlip);
     }
 
-    void Play(const char* animName){
+    void Play(const char *animName) {
         frames = animations[animName].frames;
         animIndex = animations[animName].index;
         speed = animations[animName].speed;
+    }
+
+    void Rotate() {
+        TextureManager::Rotate(texture, srcRect, destRect, spriteFlip);
     }
 
 };

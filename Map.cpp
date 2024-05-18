@@ -36,11 +36,10 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY) {
     for (int y = 0; y < sizeY; y++) {
         for (int x = 0; x < sizeX; x++) {
             mapFile.get(c);
-            std::cout << c << std::endl;
             if (c == '1') {
-                auto &tcol(manager.addEntity());
-                tcol.addComponent<ColliderComponent>("terrain", x * scaledSize, y * scaledSize, scaledSize);
-                tcol.addGroup(Game::groupColliders);
+                auto &tCol(manager.addEntity());
+                tCol.addComponent<ColliderComponent>("terrain", x * scaledSize, y * scaledSize, scaledSize);
+                tCol.addGroup(Game::groupColliders);
             }
             mapFile.ignore();
         }

@@ -28,6 +28,7 @@ public:
     bool running() { return isRunning; }
 
 
+
     static SDL_Renderer *renderer;
     static SDL_Event event;
     static bool isRunning;
@@ -36,12 +37,15 @@ public:
     enum groupLabels : std::size_t {
         groupMap,
         groupPlayers,
-        groupColliders
+        groupColliders,
+        groupDestroyers,
+        groupCoins,
+        groupFlags
     };
 
 private:
-    int counter = 0;
     SDL_Window *window{};
+    int points = 0;
 
 };
 
