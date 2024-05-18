@@ -38,9 +38,19 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY) {
             mapFile.get(c);
             if (c == '1') {
                 auto &tCol(manager.addEntity());
-                tCol.addComponent<ColliderComponent>("terrain", x * scaledSize, y * scaledSize, scaledSize);
+                tCol.addComponent<ColliderComponent>("terrain", x * scaledSize, y * scaledSize, scaledSize, ColliderComponent::TERRAIN);
                 tCol.addGroup(Game::groupColliders);
             }
+//            if (c == '2') {
+//                auto &tCol(manager.addEntity());
+//                tCol.addComponent<ColliderComponent>("rock", x * scaledSize, y * scaledSize, scaledSize, ColliderComponent::ROCK);
+//                tCol.addGroup(Game::groupDestroyers);
+//            }
+//            if (c == '3') {
+//                auto &tCol(manager.addEntity());
+//                tCol.addComponent<ColliderComponent>("coin", x * scaledSize, y * scaledSize, scaledSize, ColliderComponent::COIN);
+//                tCol.addGroup(Game::groupCoins);
+//            }
             mapFile.ignore();
         }
     }

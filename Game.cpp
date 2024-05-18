@@ -16,9 +16,15 @@ SDL_Rect Game::camera = {0, 0, 800, 480};
 bool Game::isRunning = false;
 
 auto &player(manager.addEntity());
-auto &rock(manager.addEntity());
-auto &coin(manager.addEntity());
+auto &rock1(manager.addEntity());
+auto &rock2(manager.addEntity());
+auto &rock3(manager.addEntity());
+auto &coin1(manager.addEntity());
+auto &coin2(manager.addEntity());
+auto &coin3(manager.addEntity());
+auto &coin4(manager.addEntity());
 auto &flag(manager.addEntity());
+auto &counter(manager.addEntity());
 
 
 Game::Game() = default;
@@ -29,6 +35,7 @@ Game::~Game() = default;
 void Game::init(const char *title, int xpos, int ypos, int width, int height, bool fullscreen) {
 
     int flags = 0;
+
 
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,
                              "Instrukcja",
@@ -53,20 +60,52 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     player.addComponent<ColliderComponent>("player");
     player.addGroup(groupPlayers);
 
-    rock.addComponent<TransformComponent>(352, 352, 32, 32, 1);
-    rock.addComponent<SpriteComponent>("../assets/rock.png");
-    rock.addComponent<ColliderComponent>("rock");
-    rock.addGroup(groupDestroyers);
+    rock1.addComponent<TransformComponent>(352, 352, 32, 32, 1);
+    rock1.addComponent<SpriteComponent>("../assets/rock.png");
+    rock1.addComponent<ColliderComponent>("rock");
+    rock1.addGroup(groupDestroyers);
 
-    coin.addComponent<TransformComponent>(480, 320, 32, 32, 1);
-    coin.addComponent<SpriteComponent>("../assets/coin.png", true);
-    coin.addComponent<ColliderComponent>("coin");
-    coin.addGroup(groupCoins);
+    rock2.addComponent<TransformComponent>(576, 352, 32, 32, 1);
+    rock2.addComponent<SpriteComponent>("../assets/rock.png");
+    rock2.addComponent<ColliderComponent>("rock");
+    rock2.addGroup(groupDestroyers);
+
+    rock3.addComponent<TransformComponent>(832, 352, 32, 32, 1);
+    rock3.addComponent<SpriteComponent>("../assets/rock.png");
+    rock3.addComponent<ColliderComponent>("rock");
+    rock3.addGroup(groupDestroyers);
+
+    coin1.addComponent<TransformComponent>(500, 320, 32, 32, 1);
+    coin1.addComponent<SpriteComponent>("../assets/coin.png", true);
+    coin1.addComponent<ColliderComponent>("coin");
+    coin1.addGroup(groupCoins);
+
+    coin2.addComponent<TransformComponent>(675, 320, 32, 32, 1);
+    coin2.addComponent<SpriteComponent>("../assets/coin.png", true);
+    coin2.addComponent<ColliderComponent>("coin");
+    coin2.addGroup(groupCoins);
+
+    coin3.addComponent<TransformComponent>(940, 320, 32, 32, 1);
+    coin3.addComponent<SpriteComponent>("../assets/coin.png", true);
+    coin3.addComponent<ColliderComponent>("coin");
+    coin3.addGroup(groupCoins);
+
+    coin4.addComponent<TransformComponent>(1120, 320, 32, 32, 1);
+    coin4.addComponent<SpriteComponent>("../assets/coin.png", true);
+    coin4.addComponent<ColliderComponent>("coin");
+    coin4.addGroup(groupCoins);
 
     flag.addComponent<TransformComponent>(1212, 352, 32, 32, 1);
     flag.addComponent<SpriteComponent>("../assets/flag.png", true);
     flag.addComponent<ColliderComponent>("flag");
     flag.addGroup(groupFlags);
+
+    counter.addComponent<TransformComponent>(1212, 50, 32, 32, 1);
+    counter.addComponent<SpriteComponent>("../assets/0.png");
+    counter.addComponent<ColliderComponent>("counter");
+    counter.addGroup(groupMap);
+
+
 
 }
 
@@ -76,6 +115,7 @@ auto &colliders(manager.getGroup(Game::groupColliders));
 auto &destroyers(manager.getGroup(Game::groupDestroyers));
 auto &coins(manager.getGroup(Game::groupCoins));
 auto &flags(manager.getGroup(Game::groupFlags));
+
 
 void Game::handleEvents() {
 
@@ -96,6 +136,8 @@ void Game::update() {
 
     manager.refresh();
     manager.update();
+
+
 
     for (auto &c: colliders) {
         SDL_Rect cCol = c->getComponent<ColliderComponent>().collider;
@@ -123,11 +165,28 @@ void Game::update() {
         }
     }
 
-    for (auto &coin: coins) {
-        SDL_Rect coinCol = coin->getComponent<ColliderComponent>().collider;
+    for (auto &money: coins) {
+        SDL_Rect coinCol = money->getComponent<ColliderComponent>().collider;
         if (Collision::AABB(coinCol, playerCollider)) {
-            coin->destroy();
+            money->destroy();
             points++;
+            switch ((points)) {
+                case 0:
+                    counter.getComponent<SpriteComponent>().setTex("../assets/0.png");
+                    break;
+                case 1:
+                    counter.getComponent<SpriteComponent>().setTex("../assets/1.png");
+                    break;
+                case 2:
+                    counter.getComponent<SpriteComponent>().setTex("../assets/2.png");
+                    break;
+                case 3:
+                    counter.getComponent<SpriteComponent>().setTex("../assets/3.png");
+                    break;
+                case 4:
+                    counter.getComponent<SpriteComponent>().setTex("../assets/4.png");
+                    break;
+            }
             std::cout << points << std::endl;
         }
     }
@@ -138,7 +197,7 @@ void Game::update() {
             player.getComponent<SpriteComponent>().setTex("../assets/ball_winner.png");
             SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,
                                      "Gratulacje!!!",
-                                     "Doszedłeś do końca poziomu, jesteś giga koks",
+                                     "Doszedłeś do końca poziomu, jesteś giga koks !!!",
                                      window);
             flag.destroy();
             isRunning = false;
@@ -162,6 +221,8 @@ void Game::update() {
     }
 
 }
+
+
 
 
 void Game::render() {
@@ -191,6 +252,7 @@ void Game::render() {
         f->draw();
     }
 
+
     SDL_RenderPresent(renderer);
 }
 
@@ -199,5 +261,6 @@ void Game::clean() {
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
+    TTF_Quit();
     std::cout << "BallJump closed properly" << std::endl;
 }
