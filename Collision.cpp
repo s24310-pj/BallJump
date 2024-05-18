@@ -8,7 +8,6 @@ bool Collision::AABB(const SDL_Rect &recA, const SDL_Rect &recB) {
             recA.y + recA.h >= recB.y &&
             recB.y + recB.h >= recA.y
             ) {
-        //std::cout << "hit !" << std::endl;
         return true;
 
     }

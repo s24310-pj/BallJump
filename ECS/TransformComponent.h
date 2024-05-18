@@ -18,7 +18,6 @@ public:
     int speed = 3;
 
     bool hasGravity = false;
-    bool isGrounded = false;
 
     const float gravity = 0.1f;
 

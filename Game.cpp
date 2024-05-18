@@ -39,12 +39,11 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,
                              "Instrukcja",
-                             "Witam w grze BallJump, omijaj kamienie oraz wodę, zbieraj monety i doskocz do flagi! \n"
+                             "Witam w grze BallJump, omijaj skały oraz wodę, zbieraj monety i doskocz do flagi! \n"
                              "Używaj w - aby skoczyć, a - aby poruszyć się w lewo i d - aby poruszyć się w prawo",
                              window);
 
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
-
         window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
         renderer = SDL_CreateRenderer(window, -1, 0);
         isRunning = true;
@@ -52,7 +51,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
     map = new Map("../assets/tileset.png", 1, 32);
 
-    map->LoadMap("../assets/map2.map", 40, 15);
+    map->LoadMap("../assets/map.map", 40, 15);
 
     player.addComponent<TransformComponent>(64, 350, true);
     player.addComponent<SpriteComponent>("../assets/ball.png");
@@ -106,7 +105,6 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     counter.addGroup(groupMap);
 
 
-
 }
 
 auto &tiles(manager.getGroup(Game::groupMap));
@@ -127,17 +125,13 @@ void Game::handleEvents() {
         default:
             break;
     }
-
 }
 
 void Game::update() {
-
     SDL_Rect playerCollider = player.getComponent<ColliderComponent>().collider;
 
     manager.refresh();
     manager.update();
-
-
 
     for (auto &c: colliders) {
         SDL_Rect cCol = c->getComponent<ColliderComponent>().collider;
@@ -146,8 +140,6 @@ void Game::update() {
                 player.getComponent<TransformComponent>().velocity.y = 0;
                 player.getComponent<TransformComponent>().position.y = cCol.y - playerCollider.h;
             }
-        } else {
-
         }
     }
 
@@ -219,10 +211,7 @@ void Game::update() {
     if (camera.y > camera.h) {
         camera.y = camera.h;
     }
-
 }
-
-
 
 
 void Game::render() {
@@ -257,7 +246,6 @@ void Game::render() {
 }
 
 void Game::clean() {
-
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();

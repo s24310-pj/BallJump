@@ -10,7 +10,6 @@ public:
     TransformComponent *transform;
     SpriteComponent *sprite;
 
-    bool isGrounded = false;
 
     void init() override {
         transform = &entity->getComponent<TransformComponent>();
@@ -31,8 +30,6 @@ public:
                 case SDLK_d:
                     transform->velocity.x = 1;
                     sprite->Rotate();
-                    break;
-                case SDLK_SPACE:
                     break;
                 default:
                     break;
